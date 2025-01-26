@@ -1,0 +1,10 @@
+:concurrency: 5
+:queues:
+  - default
+
+:scheduler:
+  :schedule:
+    my_worker:
+      cron: "* * * 1 * *"
+      class: "EmbeddingJob"
+      queue: "default"
