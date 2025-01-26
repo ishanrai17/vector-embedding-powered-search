@@ -97,11 +97,15 @@ GEM
     concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
     crass (1.0.6)
+    csv (3.3.2)
     date (3.4.1)
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
+      railties (>= 6.1)
     drb (2.2.1)
     ed25519 (1.3.0)
     erubi (1.13.1)
@@ -112,6 +116,10 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -153,6 +161,8 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.5)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     net-imap (0.5.5)
       date
       net-protocol
@@ -191,6 +201,7 @@ GEM
     public_suffix (6.0.1)
     puma (6.5.0)
       nio4r (~> 2.0)
+    pycall (1.5.2)
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.8)
@@ -350,6 +361,8 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  dotenv-rails
+  httparty
   importmap-rails
   jbuilder
   kamal
@@ -357,6 +370,7 @@ DEPENDENCIES
   pgvector
   propshaft
   puma (>= 5.0)
+  pycall
   rails (~> 8.0.1)
   rubocop-rails-omakase
   selenium-webdriver
