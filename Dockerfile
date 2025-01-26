@@ -3,13 +3,8 @@ FROM ruby:3.2.2-slim
 
 # # Install system dependencies
 RUN apt-get update -qq && \
-    apt-get install -y libpq-dev build-essential nodejs npm postgresql-client git cmake && \
+    apt-get install -y libpq-dev build-essential nodejs npm postgresql-client git cmake redis && \
     rm -rf /var/lib/apt/lists/*
-
-# # Make directory mountedapp
-# RUN mkdir /mountedapp
-
-
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -21,7 +16,8 @@ COPY config/database.yml config/database.yml
 # Create Rails project if not existing
 # RUN rails new . --database=postgresql --skip-git
 
-# RUN ls -l
+# Start redis server
+# RUN redis-server &
 
 RUN bundle install
 
@@ -35,7 +31,5 @@ RUN sed -i 's/host: ~$/host: <%= ENV["POSTGRES_HOST"] || "db" %>/g' config/datab
 EXPOSE 3000
 
 # Start Rails server
-CMD ["rails", "server", "-b", "0.0.0.0"]
-
-# CMD ["tail", "-f", "/dev/null"]
+CMD ["sh", "-c", "redis-server & bundle exec sidekiq & rails server -b 0.0.0.0"]
 
