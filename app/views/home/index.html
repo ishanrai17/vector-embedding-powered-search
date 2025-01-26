@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search Website</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-container {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin-top: -10vh;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            display: flex;
+        }
+
+        input {
+            flex: 1;
+            padding: 15px;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            border-radius: 25px 0 0 25px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #4285f4;
+        }
+
+        button {
+            padding: 15px 30px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+
+        #results {
+            margin-top: 20px;
+            text-align: left;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <div class="logo">Search</div>
+        <form class="search-box" id="searchForm">
+            <input id="searchInput" placeholder="Enter your search here..." required>
+            <button type="submit">Search</button>
+        </form>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        const searchTerm = document.getElementById('searchInput').value;
+        const resultsDiv = document.getElementById('results');
+        
+        try {
+            const response = await fetch(`/search?query=${encodeURIComponent(searchTerm)}`, {
+                                        method: 'GET'
+                                    });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            resultsDiv.innerHTML = `Results`;
+            
+            data.forEach(item => {
+                const row = document.createElement('div');
+                row.classList.add('result-item');
+                
+                const title = document.createElement('h3');
+                title.textContent = item.question || 'No Title';
+                row.appendChild(title);
+                
+                const description = document.createElement('p');
+                description.textContent = item.answer || 'No Description';
+                row.appendChild(description);
+                
+                resultsDiv.appendChild(row);
+            });
+            
+        } catch (error) {
+            console.error('Error:', error);
+            resultsDiv.innerHTML = `Error performing search: ${error.message}`;
+        }
+    });
+    </script>
+</body>
+</html>

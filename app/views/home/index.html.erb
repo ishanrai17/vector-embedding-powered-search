@@ -1,0 +1,38 @@
+<%= form_with url: '/search', method: :get, id: 'search-form' do |form| %>
+    <%= form.text_field :query, id: 'query-input' %>
+    <%= form.submit "Search" %>
+  <% end %>
+  
+  <div id="results">
+    <!-- Results will be dynamically populated here -->
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('search-form');
+      const resultsContainer = document.getElementById('results');
+  
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Prevent the default form submission
+  
+        const formData = new FormData(form);
+        const query = formData.get('query'); // Get the query value
+  
+        try {
+          const response = await fetch(`/search?query=${encodeURIComponent(query)}`);
+          const results = await response.json();
+  
+          // Clear and populate the results container
+          resultsContainer.innerHTML = '';
+          results.forEach(result => {
+            const div = document.createElement('div');
+            div.textContent = result; // Add the result value
+            resultsContainer.appendChild(div);
+          });
+        } catch (error) {
+          console.error('Error fetching search results:', error);
+        }
+      });
+    });
+  </script>
+  
