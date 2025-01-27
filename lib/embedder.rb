@@ -9,7 +9,7 @@ class Embedder
         http.use_ssl = true
         request = Net::HTTP::Post.new(uri.path, {
             'Content-Type' => 'application/json',
-            'Authorization' => "Bearer #{ENV['TEMP_TOKEN']}"
+            'Authorization' => "Bearer #{ENV['HUGGING_FACE_TOKEN']}"
         })
         
         # Set request body
