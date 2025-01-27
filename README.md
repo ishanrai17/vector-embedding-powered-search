@@ -1,24 +1,39 @@
-# README
+# Vector Embedding Powered Search
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
+This project provides a search engine using vector embeddings for semantic similarity.
 
-Things you may want to cover:
+## Description
+This search engine is primarily designed to provide accurate and relevant information related to COVID-19. By leveraging vector embeddings, it ensures that users can find semantically similar content, making it easier to access critical information during the pandemic.
 
-* Ruby version
+## Features
+- The entire project is containerized using Docker, with orchestration managed through Docker Compose.
+- High-performance approximate nearest neighbor search using cosine similarity.
+- Integrates with the Hugging Face MiniLM-L6-v2 embedding model via a rate-limited API to retrieve embeddings.
+- Utilizes PostgreSQL with the pgvector extension for the database.
 
-* System dependencies
+## Installation
 
-* Configuration
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/vector-embedding-powered-search.git
+    ```
+2. **Install Docker Desktop:**
+    Ensure Docker Desktop is installed on your machine. [Download Docker Desktop](https://www.docker.com/products/docker-desktop).
 
-* Database creation
+3. **Build and run the containers:**
+    Navigate to the project directory and execute:
+    ```bash
+    docker-compose up --build
+    ```
 
-* Database initialization
+4. **Access the application:**
+    Open your web browser and go to `http://localhost:3000` to start using the search engine.
 
-* How to run the test suite
+## Demo
+![Demo Video](./demo/successful_query.gif)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Usage
+1. Generate embeddings for your data.
+2. Index them using the custom EmbeddingJob worker or manually through the rails console.
+3. Run queries on the webpage and retrieve semantically similar items.
