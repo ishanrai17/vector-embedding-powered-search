@@ -13,7 +13,7 @@ This search engine is primarily designed to provide accurate and relevant inform
 
 2. **Embedding Generation**  
    - Periodic embedding generation is handled by **Sidekiq workers**.
-   - Workers integrate with the Hugging Face **MiniLM-L6-v2** embedding model via a rate-limited API to generate vector embeddings for textual data.
+   - Workers integrate with the Hugging Face **MiniLM-L6-v2** embedding model via a rate-limited API to generate vector embeddings for textual data which is stored in the database.
    - The activation frequency of workers can be fine-tuned to comply with rate-limiting requirements.
 
 3. **Search Functionality**  
