@@ -21,11 +21,11 @@ COPY config/database.yml config/database.yml
 
 RUN bundle install
 
-# # # Update database.yml to use environment variables
-RUN sed -i 's/database: myapp_development/database: <%= ENV["POSTGRES_DB"] || "myapp_development" %>/g' config/database.yml
-RUN sed -i 's/username: ~$/username: <%= ENV["POSTGRES_USER"] || "postgres" %>/g' config/database.yml
-RUN sed -i 's/password: ~$/password: <%= ENV["POSTGRES_PASSWORD"] || "postgres" %>/g' config/database.yml
-RUN sed -i 's/host: ~$/host: <%= ENV["POSTGRES_HOST"] || "db" %>/g' config/database.yml
+# # # # Update database.yml to use environment variables
+# RUN sed -i 's/database: myapp_development/database: <%= ENV["POSTGRES_DB"] || "myapp_development" %>/g' config/database.yml
+# RUN sed -i 's/username: ~$/username: <%= ENV["POSTGRES_USER"] || "postgres" %>/g' config/database.yml
+# RUN sed -i 's/password: ~$/password: <%= ENV["POSTGRES_PASSWORD"] || "postgres" %>/g' config/database.yml
+# RUN sed -i 's/host: ~$/host: <%= ENV["POSTGRES_HOST"] || "db" %>/g' config/database.yml
 
 # Expose port
 EXPOSE 3000
