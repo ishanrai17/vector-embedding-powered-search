@@ -6,11 +6,41 @@ This project provides a search engine using vector embeddings for semantic simil
 ## Description
 This search engine is primarily designed to provide accurate and relevant information related to COVID-19. By leveraging vector embeddings, it ensures that users can find semantically similar content, making it easier to access critical information during the pandemic.
 
-## Features
-- The entire project is containerized using Docker, with orchestration managed through Docker Compose.
-- High-performance approximate nearest neighbor search using cosine similarity.
-- Integrates with the Hugging Face MiniLM-L6-v2 embedding model via a rate-limited API to retrieve embeddings.
-- Utilizes PostgreSQL with the pgvector extension for the database.
+## Workflow  
+
+1. **Data Ingestion**  
+   - All raw data is stored in a centralized data store.
+
+2. **Embedding Generation**  
+   - Periodic embedding generation is handled by **Sidekiq workers**.
+   - Workers integrate with the Hugging Face **MiniLM-L6-v2** embedding model via a rate-limited API to generate vector embeddings for textual data.
+   - The activation frequency of workers can be fine-tuned to comply with rate-limiting requirements.
+
+3. **Search Functionality**  
+   - The search engine remains operational even if all the data has not yet been processed.
+   - When a search query is submitted:
+     - Vector embeddings are generated for the query using the same Hugging Face API integration.
+     - A **cosine similarity** check is performed against the stored embeddings in the database to retrieve relevant results.
+
+4. **Database**  
+   - **PostgreSQL** with the `pgvector` extension is used to store and manage vector embeddings, supporting efficient similarity-based queries.
+
+
+## Features  
+
+- **Containerized Architecture**  
+  - The entire project is containerized using **Docker**.  
+  - **Docker Compose** is used for orchestration and managing services.
+
+- **Efficient Similarity Search**  
+  - Implements high-performance approximate nearest neighbor searches using **cosine similarity**.
+
+- **Seamless Embedding Integration**  
+  - Integrates with Hugging Face's **MiniLM-L6-v2** embedding model via a rate-limited API for consistent and accurate embedding generation.
+
+- **Optimized Database**  
+  - Utilizes **PostgreSQL** with the `pgvector` extension for storing vector embeddings and performing fast similarity-based searches.
+
 
 ## Installation
 
