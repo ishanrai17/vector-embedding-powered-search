@@ -1,4 +1,4 @@
-# Vector Embedding Powered Search
+# Search Engine powered by vector engines
 
 ## Introduction
 This project provides a search engine using vector embeddings for semantic similarity.
