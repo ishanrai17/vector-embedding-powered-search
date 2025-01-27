@@ -1,4 +1,4 @@
-# Search Engine powered by vector engines
+# Search Engine powered a vector database
 
 ## Introduction
 This project provides a search engine using vector embeddings for semantic similarity.
@@ -77,7 +77,11 @@ This search engine is primarily designed to provide accurate and relevant inform
     Open your web browser and go to `http://localhost:3000` to start using the search engine.
 
 ## Demo
+When the answer exists in the dataset:  
 ![Demo Video](./demo/successful_query.gif)
+
+When the answer does not exist in the dataset:  
+![Demo Video](./demo/empty_query.gif)
 
 ## Usage
 1. Generate embeddings for your data.
