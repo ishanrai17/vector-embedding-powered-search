@@ -17,7 +17,7 @@ This search engine is primarily designed to provide accurate and relevant inform
    - The activation frequency of workers can be fine-tuned to comply with rate-limiting requirements.
 
 3. **Search Functionality**  
-   - The search engine remains operational even if all the data has not yet been processed.
+   - The search engine remains operational even if the dataset has been processed partially.
    - When a search query is submitted:
      - Vector embeddings are generated for the query using the same Hugging Face API integration.
      - A **cosine similarity** check is performed against the stored embeddings in the database to retrieve relevant results.
