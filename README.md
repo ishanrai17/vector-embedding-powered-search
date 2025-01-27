@@ -4,7 +4,7 @@
 This project provides a search engine using vector embeddings for semantic similarity.
 
 ## Description
-This search engine is primarily designed to provide accurate and relevant information related to COVID-19. By leveraging vector embeddings, it ensures that users can find semantically similar content, making it easier to access critical information during the pandemic.
+This search engine is primarily designed to provide accurate and relevant information related to COVID-19. By leveraging vector embeddings, it ensures that users can find semantically similar content, making it easier to access critical information during the pandemic. We have built this project on top of a QA dataset specifically curated for COVID-19 related questions, enhancing the search engine's ability to deliver precise and contextually relevant results.
 
 ## Workflow  
 
