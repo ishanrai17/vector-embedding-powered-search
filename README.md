@@ -33,7 +33,17 @@ This search engine is primarily designed to provide accurate and relevant inform
     docker-compose up --build
     ```
 
-5. **Access the application:**
+5. **Easy Setup:**
+    You can configure Sidekiq workers to update the database periodically. However, since the COVID-19 news database is not very large, you can process all vector embeddings in one go without being rate-limited. To achieve this, uncomment the relevant code in the database seed file.
+
+6. **Perform Migration:**
+    Navigate into the web container and run the following commands to migrate and seed the database:
+    ```bash
+    rails db:migrate db:seed
+    ```
+
+7. **Access the Application:**
+    Open your web browser and go to `http://localhost:3000` to start using the search engine.
     Open your web browser and go to `http://localhost:3000` to start using the search engine.
 
 ## Demo

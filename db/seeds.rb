@@ -21,3 +21,25 @@ CSV.foreach(Rails.root.join('storage', 'news.csv'), headers: true) do |row|
         wrong_answer: row['wrong_answer']
     )
 end
+
+# DataStore.where(processed: false).find_each do |record|
+#     # Get the embedding for the question
+    
+#     embedding = Embedder.MiniLM(record.question)
+
+#     # Insert the record into the QAs table
+#     embedding_array = "ARRAY[#{embedding.join(',')}]::vector"
+
+#     answer = record.answer.nil? ? "" : record.answer.gsub("'", "''")
+#     question = record.question.nil? ? "" : record.question.gsub("'", "''")
+
+
+#     ActiveRecord::Base.connection.execute(<<-SQL
+#       INSERT INTO qas (question, answer, embedding)
+#       VALUES ('#{question}', '#{answer}', #{embedding_array})
+#       SQL
+#     )
+
+#     record.update(processed: true)
+#   end
+# end

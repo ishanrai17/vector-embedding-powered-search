@@ -5,6 +5,6 @@
 :scheduler:
   :schedule:
     my_worker:
-      cron: "* * * 1 * *"
+      cron: "0 0 1 * *"
       class: "EmbeddingJob"
       queue: "default"

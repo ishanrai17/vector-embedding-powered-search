@@ -5,8 +5,6 @@ class HomeController < ApplicationController
   end
 
   def search
-    # Cosine similarity search
-    # results = [1,2,3,4]
     results = perform_search(params[:query])
     render json: results
   end
