@@ -21,13 +21,19 @@ This search engine is primarily designed to provide accurate and relevant inform
 2. **Install Docker Desktop:**
     Ensure Docker Desktop is installed on your machine. [Download Docker Desktop](https://www.docker.com/products/docker-desktop).
 
-3. **Build and run the containers:**
+3. **Add your Hugging Face API key:**
+    Add your API key in the .env file:
+    ```plaintext
+    HUGGING_FACE_API_KEY=your_api_key_here
+    ```
+
+4. **Build and run the containers:**
     Navigate to the project directory and execute:
     ```bash
     docker-compose up --build
     ```
 
-4. **Access the application:**
+5. **Access the application:**
     Open your web browser and go to `http://localhost:3000` to start using the search engine.
 
 ## Demo
