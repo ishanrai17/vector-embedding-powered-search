@@ -82,7 +82,7 @@ When the answer exists in the dataset:
 When the answer does not exist in the dataset:  
 ![Demo Video](./demo/empty_query.gif)
 
-## Usage
-1. Generate embeddings for your data.
-2. Index them using the custom EmbeddingJob worker or manually through the rails console.
-3. Run queries on the webpage and retrieve semantically similar items.
+## Improvements
+
+- **Fine-tuning Results**: The results of the search can be significantly improved by using a more comprehensive vector embedding model. This would allow for more accurate and relevant search results.
+- **Hosting Embedder Model**: By hosting the embedder model within a container, we can eliminate the need for an external API integration. This approach can enhance performance and reduce dependency on external services. However, it is important to note that this might require additional computational power and resources.
