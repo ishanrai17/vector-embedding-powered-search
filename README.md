@@ -4,7 +4,8 @@
 This project provides a search engine using vector embeddings for semantic similarity.
 
 ## Description
-This search engine is inspired by the Retrieval-Augmented Generation (RAG) model, which combines retrieval and generation to improve the quality of search results. By leveraging vector embeddings, it ensures that users can find semantically similar content, making it easier to access critical information during the pandemic. We have built this project on top of a QA dataset specifically curated for COVID-19 related questions, enhancing the search engine's ability to deliver precise and contextually relevant results.
+This search engine is inspired by the Retrieval-Augmented Generation (RAG) model, which combines retrieval and generation to improve the quality of search results. By leveraging vector embeddings, it ensures that users can find semantically similar content, making it easier to access critical information during the pandemic. I have built this project on top of a QA dataset specifically curated for COVID-19 related questions, enhancing the search engine's ability to deliver precise and contextually relevant results.
+
 
 ## Workflow  
 
